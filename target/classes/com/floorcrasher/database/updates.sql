@@ -1,0 +1,3 @@
+INSERT INTO `floorcrasher`.`convention` (`name`, `startDate`, `endDate`, `location`, `categories`, `adultOnly`, `active`) VALUES ('PAX EAST 2015', '2015-01-22', '2015-01-22', 'Chicago, Illinois, USA', 'fun, fast, furious', 0, 1);
+INSERT INTO `floorcrasher`.`convention` (`name`, `startDate`, `endDate`, `location`, `categories`, `adultOnly`, `active`) VALUES ('MAGFest 13', '2015-01-22', '2015-01-22', 'Harrisburg, Pennsylvania, USA', 'dumb, boring, meh', 1, 1);
+INSERT INTO `floorcrasher`.`convention` (`name`, `startDate`, `endDate`, `location`, `categories`, `adultOnly`, `active`) VALUES ('Katsucon', '2015-01-22', '2015-01-22', 'Carlisle, Pennsylvania, USA', 'sci-fi, geek, gamin', 0, 1);

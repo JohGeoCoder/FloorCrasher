@@ -1,0 +1,92 @@
+.conSearch{
+	width: 360px;
+	margin: 0 auto;
+    position: relative;
+	
+	.searchTitle{
+		font-size: 1.3em;
+	}
+	
+	input{
+		display: block;
+		width: 356px;
+		font-size: 1.1em;
+		height: 25px;
+		margin-bottom: 1px;
+	}
+	
+	.searchResults{
+		display: block;
+		width: 359px;
+        border-bottom: 1px solid black;
+		
+		.searchResult{
+			display: table;
+            width: 347px;
+			border-left: 1px solid black;
+			border-right: 1px solid black;
+			border-top: 1px solid black;
+			padding: 5px;
+            cursor: pointer;
+			
+			div{
+				margin-bottom: 3px;
+			}
+			
+			.resultInfo{
+				width: 327px;
+                float: left;
+			
+				.title{
+					p{
+						font-size: 1.1em;
+						font-weight: bold;
+					}
+				}
+				
+				.info{
+					p{
+						font-size: 0.7em;
+					}
+				}
+				
+				.categories{
+					
+					p:first-of-type{
+						font-weight: bold;
+					}
+					
+					p{
+						font-size: 0.7em;
+					}
+				}		
+			}
+			
+			.goButton{
+                margin-top: 23px;
+				width: 20px;
+				font-size: 1.4em;
+				float: left;
+			}
+		}
+        
+        .searchResult:hover{
+            background-color: #DDD;
+        }
+	}
+	
+	.viewAll{
+		border-left: 1px solid black;
+        border-right: 1px solid black;
+        border-bottom: 1px solid black;
+        position: absolute;
+        right: 1px;
+        background-color: #DDD;
+        cursor: pointer;
+	}
+    
+    .viewAll:hover{
+        background-color: #444;
+        color: white;
+    }
+}

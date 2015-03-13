@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.floorcrasher.mappers.RegistrationMapper">
+	<insert id="insertRegistration" parameterType="com.floorcrasher.model.UserRegistration">
+		INSERT INTO user(id, username, email, zipcode, gender, birthdate, passhash, enabled) 
+		VALUES(DEFAULT, #{username}, #{email}, #{zipCode}, #{gender}, #{birthDate}, #{passhash}, 1)
+	</insert>
+	<insert id="registerUserRole" parameterType="com.floorcrasher.model.UserRegistration">
+		INSERT INTO role(id, username, role)
+		VALUES
+		<foreach item="role" index="index" collection="roles" separator=",">
+	      (DEFAULT, #{username}, #{role.id})
+      	</foreach>
+	</insert>
+	<select id="getRegistrationByUsername" resultMap="Registrant">
+		SELECT
+			ID as id,
+			USERNAME as username,
+			EMAIL as email,
+			PASSHASH as passhash
+		FROM user where username = #{username}
+	</select>
+	<select id="getRegistrationByEmail" resultMap="Registrant">
+		SELECT
+			ID as id,
+			USERNAME as username,
+			EMAIL as email,
+			PASSHASH as passhash
+		FROM user where email = #{email}
+	</select>
+	<resultMap type="com.floorcrasher.model.UserRegistration" id="Registrant">
+		<id property="id" column="id" />
+		<result property="username" column="username" />
+		<result property="email" column="email" />
+		<result property="passhash" column="passhash" />
+	</resultMap>
+</mapper>

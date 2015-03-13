@@ -1,0 +1,37 @@
+.homepage{
+
+	.welcome-padding{
+		padding: $default-padding;
+	
+		.welcome-content{
+			background-color: $blue-primary;
+			display: table;
+			
+			.welcome-text{
+				display: table;
+				font-size: x-large;
+				color: $text-dark-bg;
+				
+			}
+		}
+	}
+	
+	.login-padding{
+		padding: $default-padding;
+		
+		.login-content{
+			display: table;
+			background-color: $blue-primary;
+			color: $text-dark-bg;
+		}
+	}
+	
+	.join-button{
+	
+	}
+	
+	.login-button{
+	
+	}
+
+}

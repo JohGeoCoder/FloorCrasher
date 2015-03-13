@@ -1,0 +1,251 @@
+.login-tile .field .login-element-text {
+  font-size: large; }
+
+.homepage .welcome-padding {
+  padding: 5px; }
+  .homepage .welcome-padding .welcome-content {
+    background-color: #004EB2 #004eb2;
+    display: table; }
+    .homepage .welcome-padding .welcome-content .welcome-text {
+      display: table;
+      font-size: x-large;
+      color: #efefef; }
+.homepage .login-padding {
+  padding: 5px; }
+  .homepage .login-padding .login-content {
+    display: table;
+    background-color: #004EB2 #004eb2;
+    color: #efefef; }
+
+@font-face {
+  font-family: 'icomoon';
+  src: url("../fonts/icomoon.eot?h2him2");
+  src: url("../fonts/icomoon.eot?#iefixh2him2") format("embedded-opentype"), url("../fonts/icomoon.woff?h2him2") format("woff"), url("../fonts/icomoon.ttf?h2him2") format("truetype"), url("../fonts/icomoon.svg?h2him2#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-home3:before {
+  content: "\e902"; }
+
+.icon-image:before {
+  content: "\e90d"; }
+
+.icon-camera:before {
+  content: "\e90f"; }
+
+.icon-profile:before {
+  content: "\e923"; }
+
+.icon-folder-plus:before {
+  content: "\e931"; }
+
+.icon-folder-minus:before {
+  content: "\e932"; }
+
+.icon-folder-download:before {
+  content: "\e933"; }
+
+.icon-folder-upload:before {
+  content: "\e934"; }
+
+.icon-envelop:before {
+  content: "\e945"; }
+
+.icon-box-add:before {
+  content: "\e95e"; }
+
+.icon-box-remove:before {
+  content: "\e95f"; }
+
+.icon-download:before {
+  content: "\e960"; }
+
+.icon-upload:before {
+  content: "\e961"; }
+
+.icon-undo2:before {
+  content: "\e967"; }
+
+.icon-redo2:before {
+  content: "\e968"; }
+
+.icon-user:before {
+  content: "\e971"; }
+
+.icon-users:before {
+  content: "\e972"; }
+
+.icon-user-plus:before {
+  content: "\e973"; }
+
+.icon-user-minus:before {
+  content: "\e974"; }
+
+.icon-spinner10:before {
+  content: "\e983"; }
+
+.icon-spinner11:before {
+  content: "\e984"; }
+
+.icon-wrench:before {
+  content: "\e991"; }
+
+.icon-equalizer:before {
+  content: "\e992"; }
+
+.icon-cog:before {
+  content: "\e994"; }
+
+.icon-bug:before {
+  content: "\e999"; }
+
+.icon-bin:before {
+  content: "\e9ac"; }
+
+.icon-bin2:before {
+  content: "\e9ad"; }
+
+.icon-switch:before {
+  content: "\e9b6"; }
+
+.icon-list-numbered:before {
+  content: "\e9b9"; }
+
+.icon-list:before {
+  content: "\e9ba"; }
+
+.icon-list2:before {
+  content: "\e9bb"; }
+
+.icon-menu:before {
+  content: "\e9bd"; }
+
+.icon-menu2:before {
+  content: "\e9be"; }
+
+.icon-menu3:before {
+  content: "\e9bf"; }
+
+.icon-menu4:before {
+  content: "\e9c0"; }
+
+.icon-cloud-download:before {
+  content: "\e9c2"; }
+
+.icon-cloud-upload:before {
+  content: "\e9c3"; }
+
+.icon-cloud-check:before {
+  content: "\e9c4"; }
+
+.icon-download2:before {
+  content: "\e9c5"; }
+
+.icon-upload2:before {
+  content: "\e9c6"; }
+
+.icon-link:before {
+  content: "\e9cb"; }
+
+.icon-enter:before {
+  content: "\ea13"; }
+
+.icon-exit:before {
+  content: "\ea14"; }
+
+.icon-play2:before {
+  content: "\ea15"; }
+
+.icon-circle-right:before {
+  content: "\ea42"; }
+
+.icon-mail:before {
+  content: "\ea83"; }
+
+.icon-mail2:before {
+  content: "\ea84"; }
+
+.icon-mail3:before {
+  content: "\ea85"; }
+
+.icon-mail4:before {
+  content: "\ea86"; }
+
+.conSearch {
+  width: 360px;
+  margin: 0 auto;
+  position: relative; }
+  .conSearch .searchTitle {
+    font-size: 1.3em; }
+  .conSearch input {
+    display: block;
+    width: 356px;
+    font-size: 1.1em;
+    height: 25px;
+    margin-bottom: 1px; }
+  .conSearch .searchResults {
+    display: block;
+    width: 359px;
+    border-bottom: 1px solid black; }
+    .conSearch .searchResults .searchResult {
+      display: table;
+      width: 347px;
+      border-left: 1px solid black;
+      border-right: 1px solid black;
+      border-top: 1px solid black;
+      padding: 5px;
+      cursor: pointer; }
+      .conSearch .searchResults .searchResult div {
+        margin-bottom: 3px; }
+      .conSearch .searchResults .searchResult .resultInfo {
+        width: 327px;
+        float: left; }
+        .conSearch .searchResults .searchResult .resultInfo .title p {
+          font-size: 1.1em;
+          font-weight: bold; }
+        .conSearch .searchResults .searchResult .resultInfo .info p {
+          font-size: 0.7em; }
+        .conSearch .searchResults .searchResult .resultInfo .categories p:first-of-type {
+          font-weight: bold; }
+        .conSearch .searchResults .searchResult .resultInfo .categories p {
+          font-size: 0.7em; }
+      .conSearch .searchResults .searchResult .goButton {
+        margin-top: 23px;
+        width: 20px;
+        font-size: 1.4em;
+        float: left; }
+    .conSearch .searchResults .searchResult:hover {
+      background-color: #DDD; }
+  .conSearch .viewAll {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    position: absolute;
+    right: 1px;
+    background-color: #DDD;
+    cursor: pointer; }
+  .conSearch .viewAll:hover {
+    background-color: #444;
+    color: white; }
+
+body, p, div, span, h1, h2, h3, h4, h5, h6, input, form, a {
+  margin: 0px;
+  padding: 0px; }
+
+a {
+  color: black;
+  text-decoration: none; }
+  
+
+/*# sourceMappingURL=main.css.map */
