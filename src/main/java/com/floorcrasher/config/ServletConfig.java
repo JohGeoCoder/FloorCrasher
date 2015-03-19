@@ -86,10 +86,16 @@ public class ServletConfig extends WebMvcConfigurerAdapter{
 		registry.addInterceptor(new BaseInterceptor());
 	}
 
-//	@Override
-//	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//		registry.addResourceHandler("/");
-//	}
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//		registry.addResourceHandler("/static/css/**").addResourceLocations("/static/css/");
+//		registry.addResourceHandler("/static/fonts/**").addResourceLocations("/static/fonts/");
+//		registry.addResourceHandler("/static/js/**").addResourceLocations("/static/js/");
+		registry.addResourceHandler("/resources/static/css/**").addResourceLocations("/resources/static/css/**");
+		registry.addResourceHandler("/resources/static/fonts/**").addResourceLocations("/resources/static/fonts/**");
+		registry.addResourceHandler("/resources/static/js/**").addResourceLocations("/resources/static/js/**");
+		
+	}
     
 	@Bean
     public ResourceBundleMessageSource messageSource() {

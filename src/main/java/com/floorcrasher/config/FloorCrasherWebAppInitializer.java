@@ -29,7 +29,7 @@ public class FloorCrasherWebAppInitializer implements WebApplicationInitializer 
 		// Register and map the dispatcher servlet
 		ServletRegistration.Dynamic dispatcher = container.addServlet("dispatcherServlet", new DispatcherServlet(rootContext));
 		dispatcher.setLoadOnStartup(1);
-		dispatcher.addMapping("/");
+		dispatcher.addMapping("/*");
 		dispatcher.addMapping("*.css");
 		dispatcher.addMapping("*.eot");
 		dispatcher.addMapping("*.svg");
