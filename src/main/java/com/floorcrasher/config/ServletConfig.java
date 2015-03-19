@@ -35,14 +35,14 @@ public class ServletConfig extends WebMvcConfigurerAdapter{
         return new StandardServletMultipartResolver();
     }
 	
-    @Bean
-    ViewResolver internalViewResolver() {
-        // the view resolver bean ...
-        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix("/static/WEB-INF/jsp/");
-        resolver.setSuffix(".jsp");
-        return resolver;
-    } 
+//    @Bean
+//    ViewResolver internalViewResolver() {
+//        // the view resolver bean ...
+//        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+//        resolver.setPrefix("/static/WEB-INF/jsp/");
+//        resolver.setSuffix(".jsp");
+//        return resolver;
+//    } 
     
     /**
      * Database Config
@@ -86,11 +86,10 @@ public class ServletConfig extends WebMvcConfigurerAdapter{
 		registry.addInterceptor(new BaseInterceptor());
 	}
 
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/static/assets/**").addResourceLocations("/static/assets/");
-		registry.addResourceHandler("/bootstrap/**").addResourceLocations("/bootstrap/");
-	}
+//	@Override
+//	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//		registry.addResourceHandler("/");
+//	}
     
 	@Bean
     public ResourceBundleMessageSource messageSource() {

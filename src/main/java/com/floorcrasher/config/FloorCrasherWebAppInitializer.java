@@ -27,7 +27,7 @@ public class FloorCrasherWebAppInitializer implements WebApplicationInitializer 
 			.addMappingForUrlPatterns(null, false, "/*");
 		
 		// Register and map the dispatcher servlet
-		ServletRegistration.Dynamic dispatcher = container.addServlet("dispatcher", new DispatcherServlet(rootContext));
+		ServletRegistration.Dynamic dispatcher = container.addServlet("dispatcherServlet", new DispatcherServlet(rootContext));
 		dispatcher.setLoadOnStartup(1);
 		dispatcher.addMapping("/");
 		dispatcher.addMapping("*.css");
@@ -37,6 +37,7 @@ public class FloorCrasherWebAppInitializer implements WebApplicationInitializer 
 		dispatcher.addMapping("*.woff");
 		dispatcher.addMapping("*.map");
 		dispatcher.addMapping("*.js");
+		dispatcher.addMapping("*.ico");
 	}
 
 }
