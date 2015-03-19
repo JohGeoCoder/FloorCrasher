@@ -39,7 +39,7 @@ public class ServletConfig extends WebMvcConfigurerAdapter{
     ViewResolver internalViewResolver() {
         // the view resolver bean ...
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix("/WEB-INF/jsp/");
+        resolver.setPrefix("../../../static/WEB-INF/jsp/");
         resolver.setSuffix(".jsp");
         return resolver;
     } 
@@ -88,7 +88,7 @@ public class ServletConfig extends WebMvcConfigurerAdapter{
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/assets/**").addResourceLocations("/assets/");
+		registry.addResourceHandler("/static/assets/**").addResourceLocations("/static/assets/");
 		registry.addResourceHandler("/bootstrap/**").addResourceLocations("/bootstrap/");
 	}
     

@@ -118,7 +118,7 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>StudentEnrollmentWithMyBatis</finalName>
+		<finalName>FloorCrasher</finalName>
 		<plugins>
 <!-- 			<plugin> -->
 <!-- 				<groupId>org.apache.maven.plugins</groupId> -->
