@@ -3,6 +3,7 @@ package com.floorcrasher.config;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -12,12 +13,8 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
-import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.floorcrasher.interceptor.BaseInterceptor;
 
@@ -28,37 +25,12 @@ import com.floorcrasher.interceptor.BaseInterceptor;
 @ComponentScan({"com.floorcrasher"})
 @MapperScan("com.floorcrasher.mappers")
 @EnableTransactionManagement
-public class ServletConfig extends WebMvcConfigurerAdapter{
-	
-	private static final String[] SERVLET_RESOURCE_LOCATIONS = { "/" };
-	
-	private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
-		"classpath:/js/", "classpath:/css/",
-		"classpath:/fonts/", "classpath:/resources/" };
-	
-	private static final String[] RESOURCE_LOCATIONS;
-	static {
-		RESOURCE_LOCATIONS = new String[CLASSPATH_RESOURCE_LOCATIONS.length
-				+ SERVLET_RESOURCE_LOCATIONS.length];
-		System.arraycopy(SERVLET_RESOURCE_LOCATIONS, 0, RESOURCE_LOCATIONS, 0,
-				SERVLET_RESOURCE_LOCATIONS.length);
-		System.arraycopy(CLASSPATH_RESOURCE_LOCATIONS, 0, RESOURCE_LOCATIONS,
-				SERVLET_RESOURCE_LOCATIONS.length, CLASSPATH_RESOURCE_LOCATIONS.length);
-	}
+public class ServletConfig extends WebMvcAutoConfigurationAdapter{
 	
 	@Bean
     MultipartResolver multipartResolver() {
         return new StandardServletMultipartResolver();
     }
-	
-//    @Bean
-//    ViewResolver internalViewResolver() {
-//        // the view resolver bean ...
-//        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-//        resolver.setPrefix("/static/WEB-INF/jsp/");
-//        resolver.setSuffix(".jsp");
-//        return resolver;
-//    } 
     
     /**
      * Database Config
@@ -100,11 +72,6 @@ public class ServletConfig extends WebMvcConfigurerAdapter{
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new BaseInterceptor());
-	}
-
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/**").addResourceLocations(RESOURCE_LOCATIONS);
 	}
     
 	@Bean

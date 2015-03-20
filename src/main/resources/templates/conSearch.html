@@ -3,13 +3,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Insert title here</title>
 
-<script src="static/js/conSearch.js"></script>
-<script src="static/js/jquery.watermarkinput.js" ></script>
-
 </head>
 <body>
 
 	<div th:fragment="searchModule">
+		<script th:src="@{/js/conSearch.js}"></script>
+		<script th:src="@{/js/jquery.watermarkinput.js}"></script>
 		<div class="conSearch" ng-app="conSearchApp" ng-controller="searchController">
 	        <h3>Searching for: {{searchText}}</h3>
 	        <h3>Start Date: {{startDate}}</h3>
