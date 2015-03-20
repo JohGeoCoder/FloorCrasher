@@ -30,6 +30,22 @@ import com.floorcrasher.interceptor.BaseInterceptor;
 @EnableTransactionManagement
 public class ServletConfig extends WebMvcConfigurerAdapter{
 	
+	private static final String[] SERVLET_RESOURCE_LOCATIONS = { "/" };
+	
+	private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
+		"classpath:/js/", "classpath:/css/",
+		"classpath:/fonts/", "classpath:/resources/" };
+	
+	private static final String[] RESOURCE_LOCATIONS;
+	static {
+		RESOURCE_LOCATIONS = new String[CLASSPATH_RESOURCE_LOCATIONS.length
+				+ SERVLET_RESOURCE_LOCATIONS.length];
+		System.arraycopy(SERVLET_RESOURCE_LOCATIONS, 0, RESOURCE_LOCATIONS, 0,
+				SERVLET_RESOURCE_LOCATIONS.length);
+		System.arraycopy(CLASSPATH_RESOURCE_LOCATIONS, 0, RESOURCE_LOCATIONS,
+				SERVLET_RESOURCE_LOCATIONS.length, CLASSPATH_RESOURCE_LOCATIONS.length);
+	}
+	
 	@Bean
     MultipartResolver multipartResolver() {
         return new StandardServletMultipartResolver();
@@ -88,13 +104,7 @@ public class ServletConfig extends WebMvcConfigurerAdapter{
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//		registry.addResourceHandler("/static/css/**").addResourceLocations("/static/css/");
-//		registry.addResourceHandler("/static/fonts/**").addResourceLocations("/static/fonts/");
-//		registry.addResourceHandler("/static/js/**").addResourceLocations("/static/js/");
-		registry.addResourceHandler("/resources/static/css/**").addResourceLocations("/resources/static/css/**");
-		registry.addResourceHandler("/resources/static/fonts/**").addResourceLocations("/resources/static/fonts/**");
-		registry.addResourceHandler("/resources/static/js/**").addResourceLocations("/resources/static/js/**");
-		
+		registry.addResourceHandler("/**").addResourceLocations(RESOURCE_LOCATIONS);
 	}
     
 	@Bean
