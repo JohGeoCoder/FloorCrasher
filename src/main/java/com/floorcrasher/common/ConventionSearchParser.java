@@ -17,11 +17,6 @@ public class ConventionSearchParser {
 	private static final Pattern DAY_PATTERN = Pattern.compile(RegexConstants.DAY);
 	private static final Pattern WORD_PATTERN = Pattern.compile(RegexConstants.WORD);
 	
-	private static final Pattern DATE_422_PATTERN = Pattern.compile(RegexConstants.DATE_422);
-	private static final Pattern DATE_224_PATTERN = Pattern.compile(RegexConstants.DATE_224);
-	private static final Pattern DATE_LONG_PATTERN = Pattern.compile(RegexConstants.DATE_LONG);
-	private static final Pattern DATE_YEAR_PATTERN = Pattern.compile(RegexConstants.DATE_YEAR);
-	
 	private static final Pattern DATE_PATTERN = Pattern.compile(RegexConstants.DATE);
 	private static final Pattern DATE_RANGE_PATTERN = Pattern.compile(RegexConstants.DATE_RANGE);
 	private static final Pattern DATE_RANGE_MONTH_DAY_PATTERN = Pattern.compile(RegexConstants.DATE_RANGE_MONTH_DAY);
@@ -53,12 +48,12 @@ public class ConventionSearchParser {
 		
 		searchText = searchText.trim().toLowerCase();
 		
+		//Analyze the search text for key patterns.
 		Matcher yearMatcher = YEAR_PATTERN.matcher(searchText);
 		Matcher monthMatcher = MONTH_PATTERN.matcher(searchText);
 		Matcher wordMatcher = WORD_PATTERN.matcher(searchText);
 		Matcher dateRangeMatcher = DATE_RANGE_PATTERN.matcher(searchText);
 		Matcher dateMatcher = DATE_PATTERN.matcher(searchText);
-		
 		while(yearMatcher.find()){
 			this.yearBucket.add(yearMatcher.group());
 		}
@@ -75,6 +70,8 @@ public class ConventionSearchParser {
 			this.dateBucket.add(dateMatcher.group());
 		}
 		
+		//Parse the first two available dates. Give precedence to the date ranges.
+		//If there are no dates or date ranges detected, parse no dates.
 		TreeSet<Calendar> parsedDates = null;
 		if(!dateRangeBucket.isEmpty()){
 			Iterator<String> i = dateRangeBucket.iterator();
@@ -87,8 +84,10 @@ public class ConventionSearchParser {
 			parsedDates = new TreeSet<Calendar>();
 		}
 		
+		//Add all 'words' to the keywords list.
 		this.keywords.addAll(wordBucket);
 		
+		//Declare the earliest date as the start date and the second date as the end date.
 		if(parsedDates != null){
 			Iterator<Calendar> i = parsedDates.iterator();
 			if(i.hasNext()){
@@ -101,18 +100,22 @@ public class ConventionSearchParser {
 	}
 	
 	private TreeSet<Calendar> parseDateBucket() {
+		
+		//Store the dates, as Calendar objects, in a TreeSet to sort them automatically.
 		TreeSet<Calendar> parsedDates = new TreeSet<Calendar>();
 		
 		if(this.dateBucket == null || this.dateBucket.isEmpty()){
 			return parsedDates;
 		}
 		
+		//Create the buckets for the various types of dates.
 		Set<String> dateDMYBucket = new LinkedHashSet<String>();
 		Set<String> date224Bucket = new LinkedHashSet<String>();
 		Set<String> date422Bucket = new LinkedHashSet<String>();
 		Set<String> dateLongBucket = new LinkedHashSet<String>();
 		Set<String> dateYearBucket = new LinkedHashSet<String>();
 		
+		//Now, sort all the provided dates into their respective buckets.
 		this.dateBucket.forEach((dateStr) ->{
 			if(Pattern.matches(RegexConstants.DATE_DMY, dateStr)){
 				dateDMYBucket.add(dateStr);
@@ -127,16 +130,24 @@ public class ConventionSearchParser {
 			}
 		});
 		
+		//Create a delegate that will parse only two dates total no matter how many times it's called.
 		Consumer<String> dateParser = dateStr -> {
 			if(parsedDates.size() < 2){
 				parsedDates.add(this.parseDateString(dateStr));
 			}
 		};
 		
+		//Go through the date buckets and parse them into Calendar objects.
 		dateDMYBucket.forEach(dateParser);
 		date224Bucket.forEach(dateParser);
 		date422Bucket.forEach(dateParser);
 		dateLongBucket.forEach(dateParser);
+		
+		//If there were no parseable dates, look at the year bucket.
+		//Use the years given to parse dates instead. The start date will be
+		//the beginning of one of the years, and the end of the second year.
+		//If there was one parseable date, look at the given years to find a
+		//second date.
 		if(parsedDates.size() == 0){
 			if(dateYearBucket.size() == 1){
 				String yearStr = dateYearBucket.iterator().next();
@@ -149,13 +160,23 @@ public class ConventionSearchParser {
 			dateYearBucket.forEach(dateParser);
 		}
 		
+		//If one of the parsed dates was simply a year AND there are two parsed dates,
+		//Set the SECOND date in the parsed date list as the last day of the given year IF
+		//AND ONLY IF it is the solo year given. The first date given should stay untouched
+		//because a given year is parsed as the first day of the year.
 		if(this.hasSoloYear && parsedDates.size() == 2){
+			
+			//Make sure the iterator begins with the latest date.
 			Iterator<Calendar> i = parsedDates.descendingIterator();
 			Calendar lastDate = null;
 			Calendar firstDate = null;
 			if(i.hasNext()){
 				Calendar calendar = i.next();
 				
+				//Set the latest date as the last day of the year if and only if the latest date was simply a year.
+				//There is a bug here, though. If the first date given was simply a year and the second date is
+				//explicitly the first date of a year, then the second date will be overridden as the last date of
+				//the year.
 				if(calendar.getActualMinimum(Calendar.MONTH) == calendar.get(Calendar.MONTH)){
 					if(calendar.getActualMinimum(Calendar.DAY_OF_MONTH) == calendar.get(Calendar.DAY_OF_MONTH)){
 						calendar.set(Calendar.MONTH, calendar.getActualMaximum(Calendar.MONTH));
