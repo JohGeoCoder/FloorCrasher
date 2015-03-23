@@ -10,5 +10,4 @@ public class UselessObject {
 	public void setValue(byte value) {
 		this.value = value;
 	}
-	
 }

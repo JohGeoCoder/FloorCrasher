@@ -1,7 +1,6 @@
 package com.floorcrasher.model;
 
 import java.util.Date;
-import java.util.HashSet;
 
 public class Convention {
 	private String id;

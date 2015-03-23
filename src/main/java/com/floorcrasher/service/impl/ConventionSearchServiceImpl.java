@@ -20,5 +20,4 @@ public class ConventionSearchServiceImpl implements ConventionSearchService {
 	public List<Convention> searchConventions(ConventionSearch search) {
 		return conventionSearchMapper.searchConventions(search);
 	}
-	
 }

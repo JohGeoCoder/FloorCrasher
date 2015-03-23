@@ -1,6 +1,5 @@
 package com.floorcrasher.model;
 
-
 public class ConventionSearch {
 	private String searchText;
 

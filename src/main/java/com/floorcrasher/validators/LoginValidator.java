@@ -20,5 +20,4 @@ public class LoginValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "password.empty", "Password required");	
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "username.empty", "Username required");
 	}
-
 }

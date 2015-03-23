@@ -13,7 +13,6 @@ import org.springframework.validation.Validator;
 import com.floorcrasher.common.PasswordHash;
 import com.floorcrasher.model.UserRegistration;
 import com.floorcrasher.service.RegistrationService;
-import com.floorcrasher.service.impl.RegistrationServiceImpl;
 
 @Component
 public class RegistrationValidator implements Validator {

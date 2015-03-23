@@ -2,7 +2,6 @@ package com.floorcrasher.mappers;
 
 import org.apache.ibatis.annotations.Options;
 
-import com.floorcrasher.model.UserProfile;
 import com.floorcrasher.model.UserRegistration;
 
 public interface RegistrationMapper {
