@@ -28,6 +28,8 @@ public class LoginController {
 	
 	@Autowired 
 	private LoginService loginService;
+	
+	private static final String TRUE = "true";
 
 	@InitBinder
 	protected void initBinder(WebDataBinder binder){
@@ -38,7 +40,7 @@ public class LoginController {
 	public ModelAndView login(UserLogin userLogin, HttpServletRequest request, Model model){
 		ModelAndView mv = new ModelAndView();
 		String isRegistered = request.getParameter("registered");
-		if("true".equals(isRegistered)){
+		if(TRUE.equals(isRegistered)){
 			mv.addObject("registrationSuccess", "You have successfully registered and may now log in.");
 		}
 		mv.setViewName(ViewConstants.VIEW_LOGIN);
