@@ -53,7 +53,6 @@ public class RegexConstants {
 	
 	//Date range formats
 	public static final String DATE_RANGE_MONTH_DAY = "(\\b" + MONTH + "\\s+" + DAY + "\\s*-\\s*" + DAY  + "((,|\\s)+" + YEAR_4 + ")?" + "\\b)";
-	//public static final String DATE_RANGE_DATES = "(\\b" + DATE + "\\s*(to)\\s*" + DATE + "\\b)";
 	public static final String DATE_RANGE = "(\\b" + DATE_RANGE_MONTH_DAY + "\\b)";
 	
 	
