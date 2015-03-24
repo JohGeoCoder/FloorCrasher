@@ -4,7 +4,7 @@
 <title>Insert title here</title>
 
 </head>
-<body>
+<body th:with="">
 	
 	<script th:src="@{/js/angular/angular.js}"></script>
 	<script th:src="@{bootstrap/js/bootstrap.js}"></script>
@@ -16,7 +16,7 @@
 		<div><c:out value="${registrationError}" /></div>
 	</c:if>
 	
-	<form:form commandName="userRegistration" action="/registration" method="POST">
+	<form action="/registration" method="POST">
 		<div>
 			<span>Username: </span>
 			<form:input path="username"/>
