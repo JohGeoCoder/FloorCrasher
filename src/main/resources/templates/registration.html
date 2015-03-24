@@ -1,0 +1,87 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Insert title here</title>
+
+</head>
+<body>
+	
+	<script th:src="@{/js/angular/angular.js}"></script>
+	<script th:src="@{bootstrap/js/bootstrap.js}"></script>
+	<script th:src="@{datepicker/js/bootstrap-datepicker.js}"></script>
+	<script th:src="@{/js/angular/angular.js}"></script>
+	
+	<c:set var="registrationError" value="${registrationError }" />
+	<c:if test="${not empty registrationError}">
+		<div><c:out value="${registrationError}" /></div>
+	</c:if>
+	
+	<form:form commandName="userRegistration" action="/registration" method="POST">
+		<div>
+			<span>Username: </span>
+			<form:input path="username"/>
+			<form:errors path="username" cssClass="error"/>
+		</div>
+		
+		<div>
+			<span>Password: </span>
+			<form:password path="password" />
+			<form:errors path="password" cssClass="error"/>
+		</div>
+		
+		<div>
+			<span>Repeat Password: </span>
+			<form:password path="passwordRepeat" />
+			<form:errors path="passwordRepeat" cssClass="error"/>
+		</div>
+		
+		<div>
+			<span>Zip Code: </span>
+			<form:input path="zipCode" />
+			<form:errors path="zipCode" cssClass="error"/>
+		</div>
+		
+		<div>
+			<span>Email: </span>
+			<form:input path="email" />
+			<form:errors path="email" cssClass="error"/>
+		</div>
+		
+		<div>
+			<span>Repeat Email: </span>
+			<form:input path="emailRepeat" />
+			<form:errors path="emailRepeat" cssClass="error"/>
+		</div>
+		
+		<div>
+			<span>Gender: </span>
+			<c:forEach items="${genders}" var="gender">
+				<div>
+					<span><c:out value="${gender}" /></span>
+					<form:radiobutton path="gender" value="${gender}" />
+				</div>	
+			</c:forEach>
+			<form:errors path="gender" cssClass="error" />
+		</div>
+		
+		<div class="" data-date-format="mm/dd/yyyy" data-date-viewmode="years">
+			<span>Birth Date: </span>
+			<form:input type="text" class=""											
+				path="birthDate" id="dateOfBirthInput"
+				placeholder="Date of Birth" />
+			<form:errors path="birthDate" cssClass="error" />
+		</div>
+		
+		<div>
+			<input type="submit" value="submit"/>
+		</div>
+	</form:form>
+	
+	<script>
+		$(function() {
+			$('#dateOfBirthInput').datepicker();
+		});
+	</script>
+
+</body>
+</html>

@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<script src="jquery-1.8.3.js">
+<script src="jquery-1.8.3.js"></script>
 <script src="bootstrap/js/bootstrap.js"></script>
 <script src="datepicker/js/bootstrap-datepicker.js"></script>
 
