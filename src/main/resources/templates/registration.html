@@ -1,87 +1,86 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
-
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Insert title here</title>
+	
+	<link href="/js/bootstrap/css/bootstrap.css" rel="stylesheet" />
+	<link href="/js/datepicker/css/datepicker.css" rel="stylesheet" />
 </head>
-<body th:with="">
+<body>
 	
+	<script th:src="@{/js/jquery/jquery-1.11.2.js}"></script>
 	<script th:src="@{/js/angular/angular.js}"></script>
-	<script th:src="@{bootstrap/js/bootstrap.js}"></script>
-	<script th:src="@{datepicker/js/bootstrap-datepicker.js}"></script>
-	<script th:src="@{/js/angular/angular.js}"></script>
+	<script th:src="@{/js/bootstrap/js/bootstrap.js}"></script>
+	<script th:src="@{/js/datepicker/js/bootstrap-datepicker.js}"></script>
 	
-	<c:set var="registrationError" value="${registrationError }" />
-	<c:if test="${not empty registrationError}">
-		<div><c:out value="${registrationError}" /></div>
-	</c:if>
+	<div th:if="${registrationError}" th:text="${registrationError}"></div>
 	
-	<form action="/registration" method="POST">
+	<form th:action="@{/registration}" th:object="${userRegistration}" method="post">
 		<div>
 			<span>Username: </span>
-			<form:input path="username"/>
-			<form:errors path="username" cssClass="error"/>
+			<input type="text" th:field="*{username}" th:errorclass="error"/>
+			<span th:each="err : ${#fields.errors('username')}" th:text="${err}"></span>
 		</div>
 		
 		<div>
 			<span>Password: </span>
-			<form:password path="password" />
-			<form:errors path="password" cssClass="error"/>
+			<input type="password" th:field="*{password}" th:errorclass="error" />
+			<span th:each="err : ${#fields.errors('password')}" th:text="${err}"></span>
 		</div>
 		
 		<div>
 			<span>Repeat Password: </span>
-			<form:password path="passwordRepeat" />
-			<form:errors path="passwordRepeat" cssClass="error"/>
+			<input type="password" th:field="*{passwordRepeat}" th:errorclass="error" />
+			<span th:each="err : ${#fields.errors('passwordRepeat')}" th:text="${err}"></span>
 		</div>
 		
 		<div>
 			<span>Zip Code: </span>
-			<form:input path="zipCode" />
-			<form:errors path="zipCode" cssClass="error"/>
+			<input type="text" th:field="*{zipCode}" th:errorclass="error" />
+			<span th:each="err : ${#fields.errors('zipCode')}" th:text="${err}"></span>
 		</div>
 		
 		<div>
 			<span>Email: </span>
-			<form:input path="email" />
-			<form:errors path="email" cssClass="error"/>
+			<input type="text" th:field="*{email}" th:errorclass="error" />
+			<span th:each="err : ${#fields.errors('email')}" th:text="${err}"></span>
 		</div>
 		
 		<div>
 			<span>Repeat Email: </span>
-			<form:input path="emailRepeat" />
-			<form:errors path="emailRepeat" cssClass="error"/>
+			<input type="text" th:field="*{emailRepeat}" th:errorclass="error" />
+			<span th:each="err : ${#fields.errors('emailRepeat')}" th:text="${err}"></span>
 		</div>
 		
 		<div>
 			<span>Gender: </span>
-			<c:forEach items="${genders}" var="gender">
+			<div th:each="gender : ${genders}">
 				<div>
-					<span><c:out value="${gender}" /></span>
-					<form:radiobutton path="gender" value="${gender}" />
+					<span th:text="${gender}"></span>
+					<input type="radio" th:field="*{gender}" th:value="${gender}" th:errorclass="error" />
 				</div>	
-			</c:forEach>
-			<form:errors path="gender" cssClass="error" />
+			</div>
+			<span th:each="err : ${#fields.errors('gender')}" th:text="${err}"></span>
 		</div>
 		
 		<div class="" data-date-format="mm/dd/yyyy" data-date-viewmode="years">
 			<span>Birth Date: </span>
-			<form:input type="text" class=""											
-				path="birthDate" id="dateOfBirthInput"
-				placeholder="Date of Birth" />
-			<form:errors path="birthDate" cssClass="error" />
+			<input type="text" class=""											
+				th:field="*{birthDate}" id="dateOfBirthInput"
+				placeholder="Date of Birth" th:errorclass="error" />
+			<span th:each="err : ${#fields.errors('birthDate')}" th:text="${err}"></span>
 		</div>
 		
 		<div>
 			<input type="submit" value="submit"/>
 		</div>
-	</form:form>
+	</form>
 	
 	<script>
-		$(function() {
-			$('#dateOfBirthInput').datepicker();
+ 		$(function() {
+ 			$('#dateOfBirthInput').datepicker();
 		});
-	</script>
+ 	</script>
 
 </body>
 </html>

@@ -82,7 +82,7 @@ public class RegistrationController {
 			return mv;
 		}
 		
-		mv.setViewName("redirect:/fc_login?registered=true");
+		mv.setViewName("redirect:/login?registered=true");
 		return mv;
 	}
 }
