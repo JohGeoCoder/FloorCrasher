@@ -1,0 +1,25 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Insert title here</title>
+	
+	<link href="/js/bootstrap/css/bootstrap.css" rel="stylesheet" /></link>
+	<link href="/js/datepicker/css/datepicker.css" rel="stylesheet" /></link>
+	
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="/js/bootstrap/css/bootstrap.min.css"></link>
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="/js/bootstrap/css/bootstrap-theme.min.css"></link>
+</head>
+<body>
+	
+	<script th:src="@{/js/jquery/jquery-1.11.2.js}"></script>
+	<script th:src="@{/js/angular/angular.js}"></script>
+	<script th:src="@{/js/bootstrap/js/bootstrap.js}"></script>
+	<script th:src="@{/js/datepicker/js/bootstrap-datepicker.js}"></script>
+	
+	<div class="login-section" th:include="loginTile :: loginModule"></div>
+
+</body>
+</html>
