@@ -50,14 +50,14 @@ public class ServletConfig extends WebMvcAutoConfigurationAdapter{
      * Database Config
      * @return
      */
-    @Bean
-    public DataSourceTransactionManager dataSourceTransactionManager(){
-    	DataSourceTransactionManager dataSourceTransactionManager = new DataSourceTransactionManager();
-        dataSourceTransactionManager.setDataSource(dataSource());
-        return dataSourceTransactionManager;
-    }
-    
-    /**
+//    @Bean
+//    public DataSourceTransactionManager dataSourceTransactionManager(){
+//    	DataSourceTransactionManager dataSourceTransactionManager = new DataSourceTransactionManager();
+//        dataSourceTransactionManager.setDataSource(dataSource());
+//        return dataSourceTransactionManager;
+//    }
+
+	/**
      * Mybatis SQL session factory
      * @return
      * @throws Exception
