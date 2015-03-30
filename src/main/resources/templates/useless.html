@@ -1,0 +1,24 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Insert title here</title>
+
+</head>
+<body>
+	
+	<script th:src="@{/js/angular/angular.js}"></script>
+	<script th:src="@{bootstrap/js/bootstrap.js}"></script>
+	<script th:src="@{datepicker/js/bootstrap-datepicker.js}"></script>
+	<script th:src="@{/js/angular/angular.js}"></script>
+	
+	<div th:if="${uselessVariable == true}">Spring Evaluation TRUE</div>
+	<div th:if="${uselessVariable == false}">Spring Evaluation FALSE</div>
+	<div th:if="${uselessVariable == true}">Thymeleaf Evaluation TRUE</div>
+	<div th:if="${uselessVariable == false}">Thymeleaf Evaluation FALSE</div>
+	
+	<div th:if="${uselessObject.getValue() == 5}">Value is 5</div>
+	<div th:if="${uselessObject.getValue() == 4}">Value is 4</div>
+	<div th:text="${uselessObject.value}">test</div>
+
+</body>
+</html>

@@ -1,13 +1,13 @@
 package com.floorcrasher.model;
 
 public class UselessObject {
-	private byte value;
+	private int value;
 
-	public byte getValue() {
+	public int getValue() {
 		return value;
 	}
 
-	public void setValue(byte value) {
+	public void setValue(int value) {
 		this.value = value;
 	}
 }
