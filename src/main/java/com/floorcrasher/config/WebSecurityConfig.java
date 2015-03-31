@@ -23,24 +23,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
-//				.antMatchers("/", "/homepage").permitAll()
-//				.antMatchers("/admin/**").access("hasRole('ADMIN')")
-//				.anyRequest().hasRole("USER")
-				.anyRequest().permitAll()
+				.antMatchers("/").permitAll()
+                .antMatchers("/homepage/**", "/conventions/**").hasAnyRole("USER", "ADMIN")
+                .anyRequest().authenticated()
 			.and()
 				.formLogin()	
-					.loginPage("/fc_login")
+					.loginPage("/login")
 					.defaultSuccessUrl("/homepage")
-					.failureUrl("/fc_login?error")
+					.failureUrl("/login?error")
 					.usernameParameter("username")
 					.passwordParameter("password")
 					.permitAll()
 			.and()
 				.logout().permitAll()
 			.and()
-				.exceptionHandling().accessDeniedPage("/403")
-			.and()
-				.csrf();
+				.exceptionHandling().accessDeniedPage("/403");
 	}
 
 	@Autowired
@@ -56,6 +53,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/resources/**"); // #3
+		web.ignoring().antMatchers("/js/**", "/css/**", "/fonts/**"); // #3
 	}
 }
