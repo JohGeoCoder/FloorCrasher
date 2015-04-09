@@ -61,5 +61,9 @@ public class RegistrationValidator implements Validator {
 		if(reg.getGender() == null || StringUtils.isBlank(reg.getGender().toString())){
 			e.rejectValue("gender", "gender.empty", "Please select a gender");
 		}
+		
+		if(reg.getBirthDate() == null){
+			e.rejectValue("birthDate", "birthDate.empty", "Please enter a birth date");
+		}
 	}
 }

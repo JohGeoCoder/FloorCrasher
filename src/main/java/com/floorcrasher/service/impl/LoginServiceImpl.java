@@ -38,4 +38,15 @@ public class LoginServiceImpl implements LoginService{
 		
 		return result;
 	}
+	
+	@Override
+	public String getUserPasshash(UserLogin userLogin){
+		String passhash = null;
+		
+		if(userLogin != null){
+			passhash = loginMapper.getPasshashForUsername(userLogin.getUsername());
+		}
+		
+		return passhash;
+	}
 }
