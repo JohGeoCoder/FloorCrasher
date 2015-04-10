@@ -52,17 +52,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth)
 			throws Exception {
-		auth
-			.inMemoryAuthentication()
-				.withUser("John").password("password").roles("USER", "ADMIN");
-		
 //		auth
-//			.authenticationProvider(authenticationProvider)
-//			.jdbcAuthentication().dataSource(dataSource)
-//			.usersByUsernameQuery(
-//				"select username, passhash, enabled from user where username= ?")
-//			.authoritiesByUsernameQuery(
-//				"select username, role from role where username = ?");
+//			.inMemoryAuthentication()
+//				.withUser("John").password("password").roles("USER", "ADMIN");
+		
+		auth
+			.authenticationProvider(authenticationProvider)
+			.jdbcAuthentication().dataSource(dataSource)
+			.usersByUsernameQuery(
+				"select username, passhash, enabled from user where username= ?")
+			.authoritiesByUsernameQuery(
+				"select username, role from role where username = ?");
 	}
 	
 	@Bean
