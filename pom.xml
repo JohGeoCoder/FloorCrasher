@@ -8,12 +8,6 @@
 	<version>1.8-SNAPSHOT</version>
 	<name>FloorCrasher Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	
-<!-- 	<parent> -->
-<!-- 		<groupId>org.sonatype.oss</groupId> -->
-<!-- 		<artifactId>oss-parent</artifactId> -->
-<!-- 		<version>7</version> -->
-<!-- 	</parent> -->
 
 	<parent>
         <groupId>org.springframework.boot</groupId>
@@ -91,11 +85,11 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
 		</dependency>
- 
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
 		</dependency>
+		
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>

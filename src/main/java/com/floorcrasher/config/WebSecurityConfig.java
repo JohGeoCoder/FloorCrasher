@@ -28,6 +28,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+
+		
 		http
 			.authorizeRequests()
 				.antMatchers("/", "/registration/**").permitAll()
@@ -51,12 +53,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configureGlobal(AuthenticationManagerBuilder auth)
 			throws Exception {
 		auth
-			.authenticationProvider(authenticationProvider)
-			.jdbcAuthentication().dataSource(dataSource)
-			.usersByUsernameQuery(
-				"select username, passhash, enabled from user where username= ?")
-			.authoritiesByUsernameQuery(
-				"select username, role from role where username = ?");
+			.inMemoryAuthentication()
+				.withUser("John").password("password").roles("USER", "ADMIN");
+		
+//		auth
+//			.authenticationProvider(authenticationProvider)
+//			.jdbcAuthentication().dataSource(dataSource)
+//			.usersByUsernameQuery(
+//				"select username, passhash, enabled from user where username= ?")
+//			.authoritiesByUsernameQuery(
+//				"select username, role from role where username = ?");
 	}
 	
 	@Bean
