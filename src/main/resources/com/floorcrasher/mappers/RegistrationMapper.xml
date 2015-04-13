@@ -12,7 +12,7 @@
 		INSERT INTO role(id, username, role)
 		VALUES
 		<foreach item="role" index="index" collection="roles" separator=",">
-	      (DEFAULT, #{username}, #{role.id})
+	      (DEFAULT, #{username}, CONCAT('ROLE_', #{role.id})
       	</foreach>
 	</insert>
 	<select id="getRegistrationByUsername" resultMap="Registrant">

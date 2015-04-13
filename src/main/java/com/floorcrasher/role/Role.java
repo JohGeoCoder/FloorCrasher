@@ -1,8 +1,8 @@
 package com.floorcrasher.role;
 
 public enum Role {
-	ROLE_USER("ROLE_USER", "A normal user.", true),
-	ROLE_ADMIN("ROLE_ADMIN", "An administrative user", true),
+	USER("USER", "A normal user.", true),
+	ADMIN("ADMIN", "An administrative user", true),
 	;
 	
 	private String id;

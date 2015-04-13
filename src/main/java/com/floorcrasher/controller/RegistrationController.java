@@ -67,7 +67,7 @@ public class RegistrationController {
 		}
 		
 		Set<Role> roles = new HashSet<Role>();
-		roles.add(Role.ROLE_USER);
+		roles.add(Role.USER);
 		registration.setRoles(roles);
 		
 		mv.addObject("regInfo", registration);
@@ -75,6 +75,7 @@ public class RegistrationController {
 		try{
 			registrationService.insertRegistration(registration);
 		} catch(Exception e){
+			e.printStackTrace();
 			mv.addObject("registrationError", "There was an error during registration. You have not been registered.");
 			Gender[] genders = Gender.values();
 			mv.addObject("genders", genders);
