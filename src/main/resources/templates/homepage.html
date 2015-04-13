@@ -12,6 +12,10 @@
 <body>
 
 	<div th:include="conSearch :: searchModule"></div>
+	
+	<div id="username" th:text="${userAuthentication.getName()}">USERNAME</div>
+	<div id="password" th:text="${userAuthentication.getCredentials()}">PASSWORD</div>
+	<div class="authority" th:each="authority : ${userAuthentication.getAuthorities()}" th:text="${authority}">AUTHORITY</div>
 
 </body>
 </html>

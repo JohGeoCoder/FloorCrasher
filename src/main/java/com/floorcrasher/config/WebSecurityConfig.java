@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.servlet.configuration.
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.floorcrasher.common.CrackStationPasswordEncoder;
+import com.floorcrasher.role.Role;
 
 @Configuration
 @EnableWebMvcSecurity
@@ -33,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests()
 				.antMatchers("/", "/registration/**").permitAll()
-                .antMatchers("/homepage/**", "/conventions/**").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/homepage/**", "/conventions/**").hasAnyRole("USER")
                 .anyRequest().authenticated()
 			.and()
 				.formLogin()	

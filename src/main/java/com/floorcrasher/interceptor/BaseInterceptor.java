@@ -3,8 +3,11 @@ package com.floorcrasher.interceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+import com.floorcrasher.common.ActiveUserHelper;
 
 
 public class BaseInterceptor extends HandlerInterceptorAdapter {
@@ -19,6 +22,8 @@ public class BaseInterceptor extends HandlerInterceptorAdapter {
 		CsrfToken csrf = (CsrfToken) request.getAttribute("_csrf");
 		response.addHeader(csrf.getHeaderName(), csrf.getToken());
 		
+		Authentication activeUser = ActiveUserHelper.getActiveUser();
+		request.setAttribute("userAuthentication", activeUser);
 		
 		return result;
 	}
