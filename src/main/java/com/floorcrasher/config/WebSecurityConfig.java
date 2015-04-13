@@ -24,7 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	DataSource dataSource;
 	
 	@Autowired
-    private FloorCrasherAuthenticationProvider authenticationProvider;
+    private PasswordEncoder passwordEncoder;
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -52,22 +52,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth)
 			throws Exception {
-//		auth
-//			.inMemoryAuthentication()
-//				.withUser("John").password("password").roles("USER", "ADMIN");
 		
 		auth
-			.authenticationProvider(authenticationProvider)
 			.jdbcAuthentication().dataSource(dataSource)
+			.passwordEncoder(this.passwordEncoder)
 			.usersByUsernameQuery(
 				"select username, passhash, enabled from user where username= ?")
 			.authoritiesByUsernameQuery(
 				"select username, role from role where username = ?");
+		
+		System.out.println("cheese");
 	}
 	
 	@Bean
-	public FloorCrasherAuthenticationProvider authenticationProvider(){
-		return new FloorCrasherAuthenticationProvider();
+	public PasswordEncoder passwordEncoder(){
+		PasswordEncoder encoder = new CrackStationPasswordEncoder();
+		return encoder;
 	}
 
 	@Override
