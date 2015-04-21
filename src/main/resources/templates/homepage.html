@@ -11,6 +11,10 @@
 </head>
 <body>
 
+	<form name='logoutForm' th:action="@{/logout}" method='POST'>
+		<input class="col-xs-4 col-xs-offset-0 btn" name="submit" type="submit" value="Logout" />
+	</form>
+
 	<div th:include="conSearch :: searchModule"></div>
 	
 	<div id="username" th:text="${userAuthentication.getName()}">USERNAME</div>
