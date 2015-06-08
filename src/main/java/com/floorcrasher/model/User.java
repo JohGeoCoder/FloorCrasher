@@ -4,7 +4,7 @@ import java.util.Date;
 
 import com.floorcrasher.enums.Gender;
 
-public class UserDetails {
+public class User {
 	
 	private long id;
 	private String username;
@@ -13,7 +13,8 @@ public class UserDetails {
 	private Gender gender;
 	private Date birthDate;
 	private String passHash;
-	private Integer enabled;
+	private Date registrationDate;
+	private Boolean enabled;
 	
 	public long getId() {
 		return id;
@@ -57,12 +58,16 @@ public class UserDetails {
 	public void setPassHash(String passHash) {
 		this.passHash = passHash;
 	}
-	public Integer getEnabled() {
+	public Date getRegistrationDate() {
+		return registrationDate;
+	}
+	public void setRegistrationDate(Date registrationDate) {
+		this.registrationDate = registrationDate;
+	}
+	public Boolean getEnabled() {
 		return enabled;
 	}
-	public void setEnabled(Integer enabled) {
+	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
-	}
-	
-	
+	}	
 }
