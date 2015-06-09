@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.floorcrasher.mappers.CategoryMapper">
+	<insert id="insertCategory" parameterType="com.floorcrasher.model.Category">
+		INSERT INTO category (id, convention_id, keyword)
+		VALUES (DEFAULT, #{conventionId}, #{keyword})
+	</insert>
+	
+	<select id="getCategoryById" parameterType="java.lang.Long" resultMap="categoryMapper">
+		SELECT id, convention_id, keyword
+		FROM category
+		WHERE id=#{id}
+	</select>
+	
+	<select id="getAllCategoriesByConventionId">
+		SELECT id, convention_id, keyword
+		FROM category
+		WHERE convention_id=#{conventionId}
+	</select>
+	
+	<resultMap type="com.floorcrasher.model.Category" id="categoryMapper">
+		<id property="id" column="id" />
+		<result property="conventionId" column="convention_id" />
+		<result property="keyword" column="keyword" />
+	</resultMap>
+</mapper>

@@ -9,7 +9,7 @@
         VALUES (DEFAULT, #{city}, #{stateProvince}, #{zipCode})
     </insert>
     
-    <select id="getLocationById" resultMap="locationMap">
+    <select id="getLocationById" parameterType="java.lang.Long" resultMap="locationMap">
         SELECT id, city, province_state, zipcode
         FROM location
         WHERE id=#{id}

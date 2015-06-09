@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.floorcrasher.mappers.conventionMapper">
+	<insert id="insertConvention" parameterType="com.floorcrasher.model.Convention">
+		INSERT INTO convention (id, location_id, name, start_date, end_date, adult_only, 
+				description, last_updated, enabled)
+		VALUES(DEFAULT, #{location.id}, #{name}, #{startDate}, #{endDate}, #{adultOnly},
+				#{description}, #{lastUpdated}, #{enabled})
+	</insert>
+	
+	<select id="getConventionById" parameterType="java.lang.Long" resultMap="conventionMap">
+		SELECT id, location_id, name, start_date, end_date, adult_only, description, last_update, enabled
+		FROM convention
+		WHERE id=#{id}
+	</select>
+	
+	<resultMap type="com.floorcrasher.moder.Convention" id="conventionMap">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="startDate" column="start_date" />
+		<result property="endDate" column="end_date" />
+		<result property="adultOnly" column="adult_only" />
+		<result property="description" column="description" />
+		<result property="lastUpdated" column="last_updated" />
+		<association property="location" column="location_id" javaType="com.floorcrasher.model.Location" 
+			select="com.floorcrasher.mappers.LocationMapper.getLocationById" />
+		<collection property="categories" column="id" 
+					javaType="com.floorcrasher.model.Category"
+					select="com.floorcrasher.mappers.CategoryMapper.getAllCategoriesByConventionId">
+		</collection>
+	</resultMap>
+</mapper>

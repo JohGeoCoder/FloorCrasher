@@ -1,23 +1,32 @@
 package com.floorcrasher.model;
 
 import java.util.Date;
+import java.util.List;
+
 
 public class Convention {
-	private String id;
+	private Long id;
+	private Location location;
 	private String name;
 	private Date startDate;
 	private Date endDate;
-	private String location;
-	private String categories;
 	private boolean adultOnly;
-	private boolean active;
-	private String searchText;
+	private String description;
+	private Date lastUpdated;
+	private boolean enabled;
+	private List<Category> categories;
 	
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
+	}
+	public Location getLocation() {
+		return location;
+	}
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 	public String getName() {
 		return name;
@@ -37,34 +46,34 @@ public class Convention {
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
-	public String getLocation() {
-		return location;
-	}
-	public void setLocation(String location) {
-		this.location = location;
-	}
-	public String getCategories() {
-		return categories;
-	}
-	public void setCategories(String categories) {
-		this.categories = categories;
-	}
 	public boolean isAdultOnly() {
 		return adultOnly;
 	}
 	public void setAdultOnly(boolean adultOnly) {
 		this.adultOnly = adultOnly;
 	}
-	public boolean isActive() {
-		return active;
+	public String getDescription() {
+		return description;
 	}
-	public void setActive(boolean active) {
-		this.active = active;
+	public void setDescription(String description) {
+		this.description = description;
 	}
-	public String getSearchText() {
-		return searchText;
+	public Date getLastUpdated() {
+		return lastUpdated;
 	}
-	public void setSearchText(String searchText) {
-		this.searchText = searchText;
+	public void setLastUpdated(Date lastUpdated) {
+		this.lastUpdated = lastUpdated;
+	}
+	public List<Category> getCategories() {
+		return categories;
+	}
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
+	}
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 }

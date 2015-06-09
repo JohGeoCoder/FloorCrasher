@@ -9,7 +9,7 @@
 		VALUES (DEFAULT, #{username}, #{email}, #{registration_date}, 1)
 	</insert>
 	
-	<select id="getUserById" resultMap="userMap">
+	<select id="getUserById" parameterType="java.lang.Long" resultMap="userMap">
 	    SELECT id, username, email, registration_date, enabled
 	    FROM user
 	    WHERE id=#{id}
