@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.floorcrasher.mappers.LocationMapper">
+    <insert id="insertLocation" parameterType="com.floorcrasher.model.Location">
+        INSERT INTO location (id, city, province_state, zipcode)
+        VALUES (DEFAULT, #{city}, #{stateProvince}, #{zipCode})
+    </insert>
+    
+    <select id="getLocationById" resultMap="locationMap">
+        SELECT id, city, province_state, zipcode
+        FROM location
+        WHERE id=#{id}
+    </select>
+    
+    <resultMap type="com.floorcrasher.model.Location" id="locationMap">
+        <id property="id" column="id" />
+        <result property="city" column="city" />
+        <result property="stateProvince" column="province_state" />
+        <result property="zipCode" column="zipcode" />
+    </resultMap>
+</mapper>
